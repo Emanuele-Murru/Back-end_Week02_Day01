@@ -1,0 +1,81 @@
+//package Exercise01;
+//
+//public class Main {
+//
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//}
+
+
+package Exercise01;
+
+import java.util.Arrays;
+import java.util.InputMismatchException;
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+
+	
+	    public static void main(String[] args) {
+	        int[] array = generaNumeriCasuali(5, 1, 10);
+	        stampaArray(array);
+
+	        Scanner input = new Scanner(System.in);
+
+	        while (true) {
+	            try {
+	                System.out.println("Inserisci un numero (0 per terminare):");
+	                int numero = input.nextInt();
+	                if (numero == 0) {
+	                    break;
+	                }
+
+	                System.out.println("Inserisci la posizione: (Da 1 a 5");
+	                int posizione = input.nextInt(+1);
+
+	                if (posizione < 1 || posizione >= array.length) {
+	                    throw new IndexOutOfBoundsException("Posizione non valida");
+	                }
+
+	                array[posizione] = numero;
+
+	                stampaArray(array);
+	                
+	            } catch (InputMismatchException e) {
+	                System.out.println("Input non valido. Inserisci un numero intero.");
+	                input.nextLine(); // Pulizia del buffer di input
+	                
+	            } catch (IndexOutOfBoundsException e) {
+	                System.out.println("Posizione non valida. Riprova.");
+	                input.nextLine(); // Pulizia del buffer di input
+	            }
+	        }
+
+	        System.out.println("Programma terminato.");
+	        
+	        input.close();
+	    }
+
+//	    Metodo per genera numero casuali da 1 a 10 
+	    private static int[] generaNumeriCasuali(int dimensione, int min, int max) {
+	        Random random = new Random();
+	        int[] array = new int[dimensione];
+
+	        for (int i = 0; i < array.length; i++) {
+	            array[i] = random.nextInt(max - min + 1) + min;
+	        }
+
+	        return array;
+	    }
+
+//	    Metodo per stampare Array in console
+	    private static void stampaArray(int[] array) {
+	        System.out.println("Stato attuale dell'array: " + Arrays.toString(array));
+	    }
+	}
+
+	
