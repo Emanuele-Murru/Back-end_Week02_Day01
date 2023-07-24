@@ -1,0 +1,29 @@
+package Exercise03;
+
+import java.util.Scanner;
+
+public class BancaException extends Exception {
+	
+	Scanner input = new Scanner(System.in);
+	
+	try {
+		System.out.println("Inserire un numero");
+		int x = input.nextInt();
+		
+		System.out.println("Inserire un secondo numero");
+		int y = input.nextInt();
+		
+		int result = x/y;
+		System.out.println("risultato: " + result);
+		
+	} catch(ArithmeticException e) {
+		
+		System.out.println("Non puoi dividere per zero");
+		
+	} catch (InputMismatchException e) {
+	
+		System.out.println("Non puoi dividere un numero per una stringa");
+	} catch (Exception e) {
+		System.out.println("C'è stato un problema");
+	}
+}

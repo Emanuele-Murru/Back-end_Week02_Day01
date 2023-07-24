@@ -5,10 +5,13 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+    	
         Scanner input = new Scanner(System.in);
 
         while (true) {
+        	
             try {
+            	
                 System.out.println("Inserisci il numero di km percorsi:");
                 double kmPercorsi = input.nextDouble();
 
@@ -24,17 +27,23 @@ public class Main {
                 }
 
                 double kmPerLitro = kmPercorsi / litriConsumati;
-
                 System.out.println("Il consumo dell'auto è di " + kmPerLitro + " km/litro");
 
                 break;
+                
             } catch (InputMismatchException e) {
+            	
                 System.out.println("Input non valido. Inserisci un numero valido.");
                 input.nextLine(); // Pulizia del buffer di input
+                
             } catch (IllegalArgumentException e) {
+            	
                 System.out.println(e.getMessage());
+                
             } catch (ArithmeticException e) {
+            	
                 System.out.println("Errore: Divisione per zero. Inserisci un numero di litri diverso da zero.");
+                
             }
         }
 
